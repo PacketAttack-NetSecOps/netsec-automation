@@ -1,0 +1,6 @@
+all:
+  hosts:
+    paloalto-fw:
+      ansible_host: "{{ lookup('env', 'PAN_HOST') }}"
+      ansible_user: "{{ lookup('env', 'PAN_USERNAME') }}"
+      ansible_password: "{{ lookup('env', 'PAN_PASSWORD') }}"

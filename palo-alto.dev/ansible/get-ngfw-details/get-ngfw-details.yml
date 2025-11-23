@@ -1,0 +1,25 @@
+---
+- name: Get PAN-OS system info
+  hosts: paloalto-fw
+  connection: local
+  gather_facts: no
+
+  collections:
+    - paloaltonetworks.panos
+
+  tasks:
+    - name: Get system information
+      panos_op:
+        provider:
+          ip_address: "{{ ansible_host }}"
+          username: "{{ ansible_user }}"
+          password: "{{ ansible_password }}"
+        cmd: "show system info"
+      register: result
+
+    - name: Display hostname and version
+      debug:
+        msg: 
+          - "Hostname: {{ result.stdout.system.hostname }}"
+          - "Version: {{ result.stdout.system['sw-version'] }}"
+          - "Uptime: {{ result.stdout.system.uptime }}"
