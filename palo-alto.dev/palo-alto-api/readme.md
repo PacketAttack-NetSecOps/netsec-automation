@@ -1,0 +1,1 @@
+pull data from palo alto https://api.logging-service.paloaltonetworks.com
